@@ -7,19 +7,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+//using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
 namespace PassionProject.Controllers
 {
-    public class EmployeeController : ApiController
+    public class EmployeeController : Controller
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
         static EmployeeController()
         {
-            client = new HttpClient;
+            client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:44364/api/");
      
 
@@ -45,7 +45,7 @@ namespace PassionProject.Controllers
 
             url = "appointmentdata/FindAppointmentsByEmployee/" + id;
             response = client.GetAsync(url).Result;
-            selectedEmployee.Appointments = response.Content.ReadAsAsync<List<AppointmentDto>>().Result;
+            //selectedEmployee.Appointments = response.Content.ReadAsAsync<List<AppointmentDto>>().Result;
 
             //IEnumerable<IGrouping<DateTime,AppointmentDto>> appointmentsGroup = selectedEmployee.Appointments.GroupBy(x => x.StartTime.Date);
             return View(selectedEmployee);

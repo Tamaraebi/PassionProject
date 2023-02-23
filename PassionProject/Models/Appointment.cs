@@ -11,8 +11,8 @@ namespace PassionProject.Models
     {
         [Key]
         public int AppointmentId { get; set; }
-        public string ClientName { get; set; }
-        public string ClientEmail { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerEmail { get; set; }
         [ForeignKey("SpaService")]
         public int Id { get; set; }
         public virtual SpaService SpaService { get; set; }

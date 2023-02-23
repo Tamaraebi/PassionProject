@@ -5,13 +5,15 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
+//using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using PassionProject.Models;
+
 
 namespace PassionProject.Controllers
 {
-    public class AppointmentController : ApiController
+    public class AppointmentController : Controller
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -53,7 +55,7 @@ namespace PassionProject.Controllers
                 HttpResponseMessage response = client.GetAsync(url).Result;
                 SpaServiceDto selectedTreatment = response.Content.ReadAsAsync<SpaServiceDto>().Result;
 
-                appointment.EndTime = appointment.StartTime.AddMinutes(selectedTreatment.Duration);
+                //appointment.EndTime = appointment.StartTime.AddMinutes(selectedTreatment.Duration);
                 url = "appointmentdata/addappointment";
 
                 // Javascript serializer has an issue with date coversion, the receiver deserializes

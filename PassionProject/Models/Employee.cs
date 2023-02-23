@@ -12,7 +12,7 @@ namespace PassionProject.Models
         public int EmployeeId { get; set; }
         public string Name { get; set; }
         public string Bio { get; set; }
-        public ICollection<SpaService> SpaService { get; set; }
+        public ICollection<SpaService> SpaServices { get; set; }
     }
 
     public class EmployeeDto
@@ -20,6 +20,9 @@ namespace PassionProject.Models
         public int EmployeeId { get; set; }
         public string Name { get; set; }
         public string Bio { get; set; }
+
+        public string Appointments { get; set; }
+
 
     }
 }

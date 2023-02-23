@@ -6,14 +6,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
+//using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Web.Services.Description;
+using PassionProject.Models;
 
 namespace PassionProject.Controllers
 {
-    public class SpaserviceController : ApiController
+    public class SpaserviceController : Controller
     {
 
 
@@ -21,8 +22,8 @@ namespace PassionProject.Controllers
         private JavaScriptSerializer jss = new JavaScriptSerializer();
         static SpaserviceController()
         {
-           client = new HttpClient();
-           client.BaseAddress = new Uri("https://localhost:44364/api/");
+            client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44364/api/");
         }
 
         // GET: Service/List
@@ -30,8 +31,8 @@ namespace PassionProject.Controllers
         {
             string url = "servicedata/listservices";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<ServiceDto> services = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
-            return View(services);
+            IEnumerable<SpaServiceDto> spaservice = response.Content.ReadAsAsync<IEnumerable<SpaServiceDto>>().Result;
+            return View(spaservice);
         }
 
         // GET: Service/Details/5
@@ -40,8 +41,8 @@ namespace PassionProject.Controllers
             string url = "servicedata/findservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            ServiceDto selectTreatment = response.Content.ReadAsAsync<ServiceDto>().Result;
-            return View(selectedTreatment);
+            SpaServiceDto selectTreatment = response.Content.ReadAsAsync<SpaServiceDto>().Result;
+            return View(selectTreatment);
         }
 
         // GET: Service/Create
@@ -52,27 +53,27 @@ namespace PassionProject.Controllers
 
         // POST: Service/Create
         [HttpPost]
-        public ActionResult Create(Service spaservice)
+        public ActionResult Create(Service spaservices)
         {
-    
-                string url = "servicedata/addservice";
 
-                string jsonpayload = jss.Serialize(service);
+            string url = "servicedata/addservice";
 
-                HttpContent content = new StringContent(jsonpayload);
-                content.Headers.ContentType.MediaType = "application/json";
+            string jsonpayload = jss.Serialize(spaservices);
 
-                HttpResponseMessage response = client.PostAsync(url, content).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("List");
-                }
-                else
-                {
-                    return View("Error");
-                }
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
             }
-      
+            else
+            {
+                return View("Error");
+            }
+
+
         }
 
         // GET: Service/Edit/5
@@ -80,20 +81,20 @@ namespace PassionProject.Controllers
         {
             string url = "servicedata/findservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            ServiceDto selectedTreatment = response.Content.ReadAsAsync<ServiceDto>().Result;
+            SpaServiceDto selectedTreatment = response.Content.ReadAsAsync<SpaServiceDto>().Result;
             return View(selectedTreatment);
         }
 
         // POST: Service/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Service spaservice)
+        public ActionResult Edit(int id, Service spaservices)
         {
-             string url = "servicedata/updateservice/" + id;
-             string jsonpayload = jss.Serialize(service);
-             HttpContent content = new StringContent(jsonpayload);
-             content.Headers.ContentType.MediaType = "application/json";
-             HttpResponseMessage response = client.PostAsync(url, content).Result;
-             Debug.WriteLine(content);
+            string url = "servicedata/updateservice/" + id;
+            string jsonpayload = jss.Serialize(spaservices);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(content);
 
 
             if (response.IsSuccessStatusCode)
@@ -103,17 +104,17 @@ namespace PassionProject.Controllers
             else
             {
                 return RedirectToAction("Error");
-                }
             }
-          
+        }
+
 
         // GET: Service/Delete/5
-    
+
         public ActionResult ConfirmDelete(int id)
         {
             string url = "servicedata/findservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            ServiceDto selectedService = response.Content.ReadAsAsync<ServiceDto>().Result;
+            SpaServiceDto selectedService = response.Content.ReadAsAsync<SpaServiceDto>().Result;
             return View(selectedService);
         }
 
@@ -140,5 +141,5 @@ namespace PassionProject.Controllers
         {
             return View();
         }
-    
+    }
 }

@@ -24,8 +24,8 @@ namespace PassionProject.Controllers
             {
                 AppointmentId = a.AppointmentId,
                 Id = a.Id,
-                ClientName = a.ClientName,
-                ClientEmail = a.ClientEmail,
+                CustomerName = a.CustomerName,
+                CustomerEmail = a.CustomerEmail,
                 EmployeeId = a.EmployeeId,
                 AppointmentDateTime = a.AppointmentDateTime,
             }));
@@ -36,27 +36,28 @@ namespace PassionProject.Controllers
         /// <summary>
         /// Returns details of the appointment by appointment id
         /// </summary>
-     
+        /*
         [ResponseType(typeof(Appointment))]
         [HttpGet]
         public IHttpActionResult FindAppointmentsByEmployee(int id)
         {
-            List<Appointment> appointments = db.Appointments.Include(a => a.SpaService).Where(a => a.EmployeeId == id).ToList();
+            List<Appointment> appointments = db.Appointments.Include(a => a.Id).Where(a => a.EmployeeId == id).ToList();
             List<AppointmentDto> appointmentDtos = new List<AppointmentDto>();
 
             appointments.ForEach(a => appointmentDtos.Add(new AppointmentDto()
             {
                 AppointmentId = a.AppointmentId,
                 Id = a.Id,
-                ClientName = a.ClientName,
-                ClientEmail = a.ClientEmail,
+                CustomerName = a.CustomerName,
+                CustomerEmail = a.CustomerEmail,
                 EmployeeId = a.EmployeeId,
                 AppointmentDateTime = a.AppointmentDateTime,
-                SpaServiceName = a.SpaService.Name
+                
             }));
 
             return Ok(appointmentDtos);
         }
+        */
 
 
         /// <summary>
