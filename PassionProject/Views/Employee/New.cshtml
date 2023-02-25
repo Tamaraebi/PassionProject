@@ -1,0 +1,42 @@
+﻿@model PassionProject.Models.EmployeeDto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<style>
+    .navbar {
+        background-color: seagreen;
+    }
+
+    body {
+        background-color: palevioletred;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<h2>Add Employee</h2>
+<a href="/Employee/List"> Go back to Employees</a>
+
+<form action="/Employee/Create" method="post">
+    <div>
+        <label>Employee ID:</label>
+        <input type="number" name="EmployeeID" />
+    </div>
+    <div>
+        <label>Name:</label>
+        <input type="text" name="EmployeeName" />
+    </div>
+    <div>
+        <label>Bio:</label>
+        <input type="text" name="EmployeeBio" />
+    </div>
+    <div>
+
+        <input type="submit" value="Add Employee" />
+    </div>
+
+</form>

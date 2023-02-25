@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PassionProject.Models.SpaService>
+@{
+    ViewBag.Title = "View";
+}
+
+<style>
+    body {
+        background-color: hotpink;
+        color: #D7D8EF;
+    }
+</style>
+
+<a href="/Show/List">Go back to list</a>
+<br />
+<a href="/Show/Edit/@Model.SelectedTreatment.Id">Update</a>
+<br />
+<h2>@Model.Id</h2>
+<div>Service Name: @Model.ServiceName </div>
+<div>Duration: @Model.Duration</div>
+<div>Cost: @Model.Cost</div>
+

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PassionProject.Models.SpaServiceDto>
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+<h2>Are you sure you want to delete this Service?</h2>
+<a href="/SpaService/List">Cancel</a>
+<h2>@Model.Id</h2>
+<div>Service Name: @Model.ServiceName </div>
+<div>Duration: @Model.Duration</div>
+<div>Cost: @Model.Cost</div>
+
+
+<form action="/Show/Delete/@Model.Id" method="POST">
+    <input type="submit" value="Confirm Delete" />
+
+</form>

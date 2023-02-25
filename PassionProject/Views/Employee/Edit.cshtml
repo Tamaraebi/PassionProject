@@ -1,0 +1,23 @@
+﻿@model PassionProject.Models.EmployeeDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+<a href="/Employee/list">Go back to Employee</a>
+<h2>Update Employee</h2>
+<form action="/Employee/Update/@Model.EmployeeId" method="POST">
+    <div style="display:none;">
+
+        <input type="text" name="EmployeeId" value="@Model.EmployeeId" />
+    </div>
+    <div>
+        <label>Name: </label> <input type="text" name="EmployeeName" value="@Model.Name" />
+    </div>
+    <div>
+        <label>Bio: </label><br>
+        <textarea cols="25" rows="10" name="EmprBio" value="@Model.Bio">@Model.Bio</textarea>
+    </div>
+    <div>
+        <input type="submit" value="Update Employee" />
+    </div>
+</form>

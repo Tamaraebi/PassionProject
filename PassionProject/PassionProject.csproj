@@ -266,6 +266,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Employee\DeleteConfirm.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\List.cshtml" />
+    <Content Include="Views\Employee\Error.cshtml" />
+    <Content Include="Views\Employee\New.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\SpaService\Details.cshtml" />
+    <Content Include="Views\SpaService\DeleteConfirm.cshtml" />
+    <Content Include="Views\SpaService\Error.cshtml" />
+    <Content Include="Views\Appointmet\Error.cshtml" />
+    <Content Include="Views\Appointmet\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

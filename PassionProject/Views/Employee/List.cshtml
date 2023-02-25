@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PassionProject.Models.EmployeeDto>
+@{
+    ViewBag.Title = "List";
+}
+<style>
+    .navbar {
+        background-color: seagreen;
+    }
+
+    body {
+        background-color: palevioletred;
+    }
+
+    a {
+        color: black;
+    }
+</style>
+<h2>List of Employees</h2>
+<a href="/Employee/New"> Add Employee</a>
+@foreach (var employee in Model)
+{
+    <h2><a href="/Employee/Details/@employee.EmployeeId">Employee ID: @employee.EmployeeId</a></h2>
+    <div>Employee name: @employee.Name</div>
+    <div>Employee Bio: @employee.Bio</div>
+}
+

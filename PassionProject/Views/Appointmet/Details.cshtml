@@ -1,0 +1,13 @@
+﻿@model PassionProject.Models.AppointmentDto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<a href="/Appointment/List"> Go back to list</a>
+<h2>AppointmentID: @Model.AppointmentId</h2>
+<div>Customer Name: @Model.CustomerName</div>
+<div>Customer Email: @Model.CustomerEmail</div>
+<div>EmployeeID: @Model.EmployeeId</div>
+<div>Appointment Date and Time: @Model.AppointmentDateTime</div>

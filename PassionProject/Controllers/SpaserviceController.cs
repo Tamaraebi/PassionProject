@@ -29,7 +29,7 @@ namespace PassionProject.Controllers
         // GET: Service/List
         public ActionResult List()
         {
-            string url = "servicedata/listservices";
+            string url = "spaservicedata/listspaservices";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<SpaServiceDto> spaservice = response.Content.ReadAsAsync<IEnumerable<SpaServiceDto>>().Result;
             return View(spaservice);
@@ -38,7 +38,7 @@ namespace PassionProject.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            string url = "servicedata/findservice/" + id;
+            string url = "spaservicedata/findspaservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             SpaServiceDto selectTreatment = response.Content.ReadAsAsync<SpaServiceDto>().Result;
@@ -79,7 +79,7 @@ namespace PassionProject.Controllers
         // GET: Service/Edit/5
         public ActionResult Edit(int id)
         {
-            string url = "servicedata/findservice/" + id;
+            string url = "spaservicedata/findspaservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             SpaServiceDto selectedTreatment = response.Content.ReadAsAsync<SpaServiceDto>().Result;
             return View(selectedTreatment);
@@ -89,7 +89,7 @@ namespace PassionProject.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Service spaservices)
         {
-            string url = "servicedata/updateservice/" + id;
+            string url = "spaservicedata/updatespaservice/" + id;
             string jsonpayload = jss.Serialize(spaservices);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";
@@ -112,7 +112,7 @@ namespace PassionProject.Controllers
 
         public ActionResult ConfirmDelete(int id)
         {
-            string url = "servicedata/findservice/" + id;
+            string url = "spaservicedata/findspaservice/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             SpaServiceDto selectedService = response.Content.ReadAsAsync<SpaServiceDto>().Result;
             return View(selectedService);
@@ -123,7 +123,7 @@ namespace PassionProject.Controllers
         public ActionResult Delete(int id)
         {
 
-            string url = "servicedata/deleteservice/" + id;
+            string url = "spaservicedata/deletespaservice/" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
